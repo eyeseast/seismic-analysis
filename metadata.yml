@@ -1,1 +1,32 @@
 # https://docs.datasette.io/en/stable/metadata.html
+
+databases:
+  quakes:
+    tables:
+      KNN:
+        hidden: true
+
+      data_licenses:
+        hidden: true
+
+    queries:
+      risk:
+        title: Seismic risk
+        sql: |
+          select
+            rowid,
+            ValueRange,
+            case
+              ValueRange
+              when '< 1' then colorbrewer('YlOrRd', 5, 0)
+              when '1 - 2' then colorbrewer('YlOrRd', 5, 1)
+              when '2 - 5' then colorbrewer('YlOrRd', 5, 2)
+              when '5 - 10' then colorbrewer('YlOrRd', 5, 3)
+              when '10 - 14' then colorbrewer('YlOrRd', 5, 4)
+            end as fill,
+            0.5 as [stroke-width],
+            geometry
+          from
+            seismic
+          order by
+            rowid

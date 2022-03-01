@@ -9,6 +9,7 @@ sqlite-utils = "*"
 geojson-to-sqlite = "*"
 datasette-geojson-map = "*"
 sqlite-colorbrewer = "*"
+geocode-sqlite = "*"
 
 [dev-packages]
 ipython = "*"
