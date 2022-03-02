@@ -45,7 +45,7 @@ databases:
             rowid
 
       risk_innout:
-        title: "In & Out & Earthquakes"
+        title: "In-N-Out & Earthquakes"
         sql: |
           select
             innout.*,
@@ -63,3 +63,32 @@ databases:
             seismic
           where
             within(innout.geometry, seismic.geometry)
+
+      risk_innout_indexed:
+        title: "In-N-Out & Earthquakes (indexed)"
+        sql: |
+          select
+            innout.*,
+            case
+              seismic.ValueRange
+              when '< 1' then colorbrewer('YlOrRd', 5, 0)
+              when '1 - 2' then colorbrewer('YlOrRd', 5, 1)
+              when '2 - 5' then colorbrewer('YlOrRd', 5, 2)
+              when '5 - 10' then colorbrewer('YlOrRd', 5, 3)
+              when '10 - 14' then colorbrewer('YlOrRd', 5, 4)
+            end as [marker-color],
+            'small' as [marker-size]
+          from
+            innout,
+            seismic
+          where
+            within(innout.geometry, seismic.geometry)
+            and innout.rowid in (
+              select
+                rowid
+              from
+                SpatialIndex
+              where
+                f_table_name = 'innout'
+                and search_frame = seismic.geometry
+            )
