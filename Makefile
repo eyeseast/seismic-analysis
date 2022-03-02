@@ -25,5 +25,16 @@ run:
 	# this will fail if no databases exist
 	pipenv run datasette serve *.db -m metadata.yml --load-extension spatialite
 
+publish:
+	pipenv run datasette publish fly *.db \
+		--app nicar22-seismic-datasette \
+		--spatialite \
+		-m metadata.yml \
+		--install datasette-geojson-map \
+		--install sqlite-colorbrewer
+
+open:
+	flyctl --app nicar22-seismic-datasette open
+
 clean:
 	rm -f quakes.db quakes.db-*

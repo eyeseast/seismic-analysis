@@ -1,8 +1,20 @@
 # https://docs.datasette.io/en/stable/metadata.html
 
+title: Seismic Risk
+description: Demo app for spatial data cooking show.
+
 databases:
   quakes:
     tables:
+      innout:
+        title: In-N-Out locations
+        source: alltheplaces.xyz
+
+      seismic:
+        title: Seismic risk
+        source: US Geological Survey
+        description: Provided by Peter Aldhous
+
       KNN:
         hidden: true
 
