@@ -415,11 +415,11 @@
         },
         "sqlite-colorbrewer": {
             "hashes": [
-                "sha256:65cba7fc21b65e17cb359ba348f8777d3300998c5178abc72bdaecbcdf1a37d9",
-                "sha256:6b4f1c44d0d49dce14a1554a76e353440dafcca04c0f1c9eb08ab35336f29f3b"
+                "sha256:08b81d4288fcf29b03cd8c1c84b4a4425220a59d5cbd32b71818ab2eac945eaf",
+                "sha256:80049cd65e94a3fd128284218baa3d71f76df70ffe41d38f3daacf0f857548ea"
             ],
             "index": "pypi",
-            "version": "==0.1"
+            "version": "==0.2"
         },
         "sqlite-fts4": {
             "hashes": [
