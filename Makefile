@@ -36,5 +36,20 @@ publish:
 open:
 	flyctl --app nicar22-seismic-datasette open
 
+# exports
+exports/risk.geojson:
+	mkdir -p $(dir $@)
+	pipenv run datasette quakes.db --get /quakes/risk.geojson \
+		-m metadata.yml \
+		--load-extension spatialite > $@
+
+exports/risk_innout.geojson:
+	mkdir -p $(dir $@)
+	pipenv run datasette quakes.db --get /quakes/risk_innout_indexed.geojson \
+		-m metadata.yml \
+		--load-extension spatialite > $@
+
+exports: exports/risk.geojson exports/risk_innout.geojson
+
 clean:
 	rm -f quakes.db quakes.db-*
