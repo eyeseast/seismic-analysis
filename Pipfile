@@ -10,6 +10,7 @@ geojson-to-sqlite = "*"
 datasette-geojson-map = "*"
 sqlite-colorbrewer = "*"
 geocode-sqlite = "*"
+census-map-downloader = "*"
 
 [dev-packages]
 ipython = "*"

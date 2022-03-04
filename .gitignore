@@ -11,6 +11,9 @@ venv
 dist
 build
 
+raw/
+processed/
+
 *.db
 *.db-wal
 *.db-journal
