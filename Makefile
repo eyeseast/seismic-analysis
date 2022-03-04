@@ -65,7 +65,8 @@ publish:
 		--spatialite \
 		-m metadata.yml \
 		--install datasette-geojson-map \
-		--install sqlite-colorbrewer
+		--install sqlite-colorbrewer \
+		--extra-options="--setting sql_time_limit_ms 10000"
 
 open:
 	flyctl --app nicar22-seismic-datasette open
